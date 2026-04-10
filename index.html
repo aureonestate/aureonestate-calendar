@@ -166,21 +166,7 @@
             white-space: nowrap;
         }
 
-        /* -- Smoobu widget overrides -- */
-        /* Current day highlight: warm tone instead of cyan */
-        .calendar-wrap td.today,
-        .calendar-wrap td.active,
-        .calendar-wrap .today,
-        .calendar-wrap td[style*="border-color: cyan"],
-        .calendar-wrap td[style*="border-color: aqua"] {
-            border-color: #d4908f !important;
-            outline-color: #d4908f !important;
-        }
-
-        /* Subtle grid lines between day cells */
-        .calendar-wrap td {
-            border: 1px solid rgba(0,0,0,0.05) !important;
-        }
+        /* -- Smoobu widget overrides applied via JS below -- */
 
         .legend-swatch {
             width: 14px;
@@ -285,6 +271,35 @@
     <footer>
         Aureon Estate &copy; 2026
     </footer>
+
+    <script>
+        // Override Smoobu widget styles after it loads
+        function fixCalendarStyles() {
+            const widget = document.querySelector('.calendarContent');
+            if (!widget || !widget.querySelector('td')) return;
+
+            // Fix today highlight: cyan → warm rose
+            widget.querySelectorAll('td').forEach(td => {
+                const style = td.getAttribute('style') || '';
+                if (style.includes('cyan') || style.includes('aqua') || style.includes('#00ffff') || style.includes('#00FFFF') || style.includes('rgb(0, 255, 255)')) {
+                    td.style.borderColor = '#d4908f';
+                }
+                if (td.style.outlineColor && (td.style.outlineColor.includes('cyan') || td.style.outlineColor === 'rgb(0, 255, 255)')) {
+                    td.style.outlineColor = '#d4908f';
+                }
+            });
+        }
+
+        // Run repeatedly as widget loads async
+        const interval = setInterval(fixCalendarStyles, 500);
+        setTimeout(() => clearInterval(interval), 10000);
+
+        // Also run on any clicks (month navigation)
+        document.addEventListener('click', () => {
+            setTimeout(fixCalendarStyles, 300);
+            setTimeout(fixCalendarStyles, 800);
+        });
+    </script>
 
 </body>
 </html>

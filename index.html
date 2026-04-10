@@ -151,8 +151,9 @@
         /* -- Legend -- */
         .legend {
             display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            margin-bottom: 1rem;
             padding: 0 0.25rem;
         }
 
@@ -162,6 +163,23 @@
             gap: 0.45rem;
             font-size: 0.8rem;
             color: #999;
+            white-space: nowrap;
+        }
+
+        /* -- Smoobu widget overrides -- */
+        /* Current day highlight: warm tone instead of cyan */
+        .calendar-wrap td.today,
+        .calendar-wrap td.active,
+        .calendar-wrap .today,
+        .calendar-wrap td[style*="border-color: cyan"],
+        .calendar-wrap td[style*="border-color: aqua"] {
+            border-color: #d4908f !important;
+            outline-color: #d4908f !important;
+        }
+
+        /* Subtle grid lines between day cells */
+        .calendar-wrap td {
+            border: 1px solid rgba(0,0,0,0.05) !important;
         }
 
         .legend-swatch {
@@ -225,19 +243,6 @@
             </div>
         </div>
 
-        <div class="calendar-wrap">
-            <!-- Smoobu Calendar Widget -->
-            <div id="smoobuApartment3184747it" class="calendarWidget">
-                <div class="calendarContent"
-                    data-load-calendar-url="https://login.smoobu.com/it/cockpit/widget/single-calendar/3184747"
-                    data-verification="a307632f384ee7e3357a96fd4c4952f14550b718b281aeb29abca0547b52a41c"
-                    data-baseUrl="https://login.smoobu.com"
-                    data-disable-css="false">
-                </div>
-                <script type="text/javascript" src="https://login.smoobu.com/js/Apartment/CalendarWidget.js"></script>
-            </div>
-        </div>
-
         <div class="legend">
             <div class="legend-item">
                 <div class="legend-swatch booked"></div>
@@ -254,6 +259,19 @@
             <div class="legend-item">
                 <div class="legend-swatch checkout"></div>
                 Check-out
+            </div>
+        </div>
+
+        <div class="calendar-wrap">
+            <!-- Smoobu Calendar Widget -->
+            <div id="smoobuApartment3184747it" class="calendarWidget">
+                <div class="calendarContent"
+                    data-load-calendar-url="https://login.smoobu.com/it/cockpit/widget/single-calendar/3184747"
+                    data-verification="a307632f384ee7e3357a96fd4c4952f14550b718b281aeb29abca0547b52a41c"
+                    data-baseUrl="https://login.smoobu.com"
+                    data-disable-css="false">
+                </div>
+                <script type="text/javascript" src="https://login.smoobu.com/js/Apartment/CalendarWidget.js"></script>
             </div>
         </div>
     </section>

@@ -3,121 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aureon Estate — Calendario</title>
+    <title>Aureon Estate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: #f5f3f0;
-            color: #2c2c2c;
+            background: #ffffff;
+            color: #1a1a1a;
             min-height: 100vh;
         }
 
-        header {
-            background: #fff;
-            border-bottom: 1px solid #e8e4df;
-            padding: 1.25rem 2rem;
+        /* -- Top bar -- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 1rem 2.5rem;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
 
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
+        .brand {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.35rem;
             color: #1a1a1a;
+            letter-spacing: -0.01em;
         }
 
-        .logo span {
-            color: #8b7355;
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e8a0a0;
+            display: inline-block;
+            animation: pulse 2.5s ease-in-out infinite;
         }
 
-        .badge {
-            font-size: 0.75rem;
-            font-weight: 500;
-            background: #f0ebe4;
-            color: #8b7355;
-            padding: 0.35rem 0.75rem;
-            border-radius: 100px;
-        }
-
-        main {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 2.5rem 1.5rem;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.4rem;
-        }
-
-        .subtitle {
-            color: #7a7a7a;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-
-        .calendar-card {
-            background: #fff;
-            border-radius: 12px;
-            border: 1px solid #e8e4df;
-            padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-
-        .calendar-card h2 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .calendar-card .property-sub {
-            font-size: 0.85rem;
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
             color: #999;
-            margin-bottom: 1.25rem;
-            padding-bottom: 1.25rem;
-            border-bottom: 1px solid #f0ebe4;
         }
 
-        /* Override some Smoobu widget defaults to blend in */
-        .calendarWidget {
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* -- Hero -- */
+        .hero {
+            padding: 8rem 2.5rem 3rem;
+            max-width: 880px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: #d4908f;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #888;
+            max-width: 420px;
+            line-height: 1.6;
+        }
+
+        /* -- Property section -- */
+        .property-section {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 2.5rem 4rem;
+        }
+
+        .property-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .property-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f2d5d5, #e8a0a0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .property-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #bbb;
+            margin-bottom: 0.15rem;
+        }
+
+        .property-name {
+            font-family: 'Instrument Serif', serif;
+            font-size: 1.3rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* -- Calendar wrapper -- */
+        .calendar-wrap {
+            border: 1px solid #f0ecec;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+        }
+
+        .calendar-wrap .calendarWidget {
             width: 100%;
         }
 
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.8rem;
-            color: #bbb;
+        /* Tame the Smoobu "Powered by" link */
+        .calendar-wrap a[href*="smoobu"] {
+            opacity: 0.3;
+            font-size: 0.7rem;
         }
 
-        @media (max-width: 600px) {
-            header { padding: 1rem; }
-            main { padding: 1.5rem 1rem; }
-            h1 { font-size: 1.25rem; }
-            .calendar-card { padding: 1rem; }
+        /* -- Legend -- */
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            padding: 0 0.25rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .legend-swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 4px;
+        }
+
+        .legend-swatch.booked {
+            background: linear-gradient(135deg, #f2c4c4, #e8a0a0);
+        }
+
+        .legend-swatch.available {
+            background: #fff;
+            border: 1.5px solid #ddd;
+        }
+
+        .legend-swatch.checkin {
+            background: linear-gradient(to bottom right, #fff 50%, #e8a0a0 50%);
+            border: 1.5px solid #ddd;
+        }
+
+        .legend-swatch.checkout {
+            background: linear-gradient(to bottom right, #e8a0a0 50%, #fff 50%);
+            border: 1.5px solid #ddd;
+        }
+
+        /* -- Footer -- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            font-size: 0.75rem;
+            color: #ccc;
+            border-top: 1px solid #f5f2f2;
+        }
+
+        /* -- Mobile -- */
+        @media (max-width: 640px) {
+            nav { padding: 1rem 1.25rem; }
+            .hero { padding: 6.5rem 1.25rem 2rem; }
+            .property-section { padding: 0 1.25rem 3rem; }
+            .legend { gap: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Aureon <span>Estate</span></div>
-    </header>
+    <nav>
+        <div class="brand">Aureon Estate</div>
+        <div class="nav-right">
+            <span class="nav-dot"></span>
+            Aggiornato in tempo reale
+        </div>
+    </nav>
 
-    <main>
+    <section class="property-section" style="padding-top: 6rem;">
+        <div class="property-header">
+            <div>
+                <div class="property-label">Proprietà</div>
+                <div class="property-name">Via Siracusa 6 - III Piano</div>
+            </div>
+        </div>
 
-        <div class="calendar-card">
-            <h2>Via Siracusa</h2>
-            <p class="property-sub">Calendario aggiornato in tempo reale</p>
-
+        <div class="calendar-wrap">
             <!-- Smoobu Calendar Widget -->
             <div id="smoobuApartment3184747it" class="calendarWidget">
                 <div class="calendarContent"
@@ -130,21 +238,31 @@
             </div>
         </div>
 
-        <!-- 
-            ADDING MORE PROPERTIES:
-            Copy the calendar-card div above and paste it below.
-            Replace the widget code with the embed code from Smoobu for the other property.
-            Example:
-
-            <div class="calendar-card" style="margin-top: 1.5rem;">
-                <h2>Your Other Property Name</h2>
-                <p class="property-sub">Calendario aggiornato in tempo reale da Smoobu</p>
-                <div id="smoobuApartmentXXXXXXXit" class="calendarWidget">
-                    ... paste Smoobu widget code here ...
-                </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-swatch booked"></div>
+                Prenotato
             </div>
-        -->
-    </main>
+            <div class="legend-item">
+                <div class="legend-swatch available"></div>
+                Disponibile
+            </div>
+            <div class="legend-item">
+                <div class="legend-swatch checkin"></div>
+                Check-in
+            </div>
+            <div class="legend-item">
+                <div class="legend-swatch checkout"></div>
+                Check-out
+            </div>
+        </div>
+    </section>
+
+    <!--
+        AGGIUNGERE ALTRE PROPRIETÀ:
+        Copia l'intero <section class="property-section"> qui sopra,
+        sostituisci il nome e il widget embed code di Smoobu.
+    -->
 
     <footer>
         Aureon Estate &copy; 2026

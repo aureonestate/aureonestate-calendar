@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aureon Estate — Calendario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f5f3f0;
+            color: #2c2c2c;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e8e4df;
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #1a1a1a;
+        }
+
+        .logo span {
+            color: #8b7355;
+        }
+
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #f0ebe4;
+            color: #8b7355;
+            padding: 0.35rem 0.75rem;
+            border-radius: 100px;
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.4rem;
+        }
+
+        .subtitle {
+            color: #7a7a7a;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .calendar-card {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e8e4df;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .calendar-card h2 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .calendar-card .property-sub {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid #f0ebe4;
+        }
+
+        /* Override some Smoobu widget defaults to blend in */
+        .calendarWidget {
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 1rem; }
+            main { padding: 1.5rem 1rem; }
+            h1 { font-size: 1.25rem; }
+            .calendar-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Aureon <span>Estate</span></div>
+    </header>
+
+    <main>
+
+        <div class="calendar-card">
+            <h2>Via Siracusa</h2>
+            <p class="property-sub">Calendario aggiornato in tempo reale</p>
+
+            <!-- Smoobu Calendar Widget -->
+            <div id="smoobuApartment3184747it" class="calendarWidget">
+                <div class="calendarContent"
+                    data-load-calendar-url="https://login.smoobu.com/it/cockpit/widget/single-calendar/3184747"
+                    data-verification="a307632f384ee7e3357a96fd4c4952f14550b718b281aeb29abca0547b52a41c"
+                    data-baseUrl="https://login.smoobu.com"
+                    data-disable-css="false">
+                </div>
+                <script type="text/javascript" src="https://login.smoobu.com/js/Apartment/CalendarWidget.js"></script>
+            </div>
+        </div>
+
+        <!-- 
+            ADDING MORE PROPERTIES:
+            Copy the calendar-card div above and paste it below.
+            Replace the widget code with the embed code from Smoobu for the other property.
+            Example:
+
+            <div class="calendar-card" style="margin-top: 1.5rem;">
+                <h2>Your Other Property Name</h2>
+                <p class="property-sub">Calendario aggiornato in tempo reale da Smoobu</p>
+                <div id="smoobuApartmentXXXXXXXit" class="calendarWidget">
+                    ... paste Smoobu widget code here ...
+                </div>
+            </div>
+        -->
+    </main>
+
+    <footer>
+        Aureon Estate &copy; 2026
+    </footer>
+
+</body>
+</html>
